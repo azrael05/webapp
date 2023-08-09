@@ -1,7 +1,4 @@
 from flask import Flask, request, jsonify, render_template
-import sys
-sys.path.append("..")
-from log_handler import logger
 app = Flask(__name__)
 
 
@@ -81,28 +78,28 @@ class MyOperations:
 
 @app.route("/")
 def home():
-    logger.debug("home loaded")
+    # logger.debug("home loaded")
     return render_template("index.html")
 
 @app.route('/<string:operation>', methods=['GET'])
 def calculate(operation):
-    logger.debug("operation started")
+    # logger.debug("operation started")
     num1 = float(request.args.get('num1', 0))
-    logger.debug("got 1st number")
+    # logger.debug("got 1st number")
     num2 = float(request.args.get('num2', 0))
-    logger.debug("got 2nd number")
+    # logger.debug("got 2nd number")
     op_obj = MyOperations(num1,num2)
     if operation == 'add':
-        logger.debug("addition performed")
+        # logger.debug("addition performed")
         result = op_obj.add()
     elif operation == 'subtract':
-        logger.debug("subtraction performed")
+        # logger.debug("subtraction performed")
         result = op_obj.subt()
     elif operation == 'multiply':
-        logger.debug("multiplication performed")
+        # logger.debug("multiplication performed")
         result = op_obj.mul()
     elif operation == 'divide':
-        logger.debug("division performed")
+        # logger.debug("division performed")
         result = op_obj.div()
 
     return jsonify({"result": result})
