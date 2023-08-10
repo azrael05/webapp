@@ -89,6 +89,7 @@ def calculate(operation):
     num2 = float(request.args.get('num2', 0))
     # logger.debug("got 2nd number")
     op_obj = MyOperations(num1,num2)
+    result = "ERROR"
     if operation == 'add':
         # logger.debug("addition performed")
         result = op_obj.add()
